@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <Title>INST377 - Ari Freireich - Assignment 2 Home Page</Title>
+        <link rel="stylesheet" href="assignment2css.css">
+        <script src="annyang.min.js"></script>
+        <script src="assignment2.js" defer></script>
+    </head>
+
+    <body>
+
+        <header>
+            <h1>INST377 - Ari Freireich - Assignment 2 Home Page</h1>
+        </header>
+
+        <!-- Nav bar -->
+        <nav id="navMain">
+            <ul>
+                <li><a href="assignment2Home.html">Home</a></li>
+                <li><a href="assignment2Stocks.html">Stocks</a></li>
+                <li><a href="assignment2Dogs.html">Dogs</a></li>
+            </ul>
+
+        </nav>       
+
+        <div class="mainContainer">
+            <h1>Here are some activities to try!</h1>
+
+            <a a href="assignment2Stocks.html">
+                <button class="button-64">Stocks</button>
+            </a>
+    
+            <a a href="assignment2Dogs.html">
+                <button class="button-64">Dogs</button>
+            </a>
+
+            <div class="quoteBox">
+                <h1>Quote of the Page Load</h1>
+                <div class="quote" id="quote"></div>
+                <div class="author" id="author"></div>
+            
+
+            </div>
+
+        </div>
+
+
+
+        <div class="annyangContainer">
+            <h1>Navigate the webpage using audio!</h1>
+            <p>Please ensure that your mic is enabled.</p>
+
+            <button id="startVoice">Start Voice Control</button>
+            <button id="stopVoice">Stop Voice Control</button>
+
+            <script>
+                let isListening = false;
+
+                if (annyang) {
+                // Let's define a command.
+                const commands = {
+                    'hello': () => { alert('Hello world!'); },
+                    'change background to *color': function(color) {document.body.style.backgroundColor = color;},
+                    'navigate to home': () => {window.location.href= "assignment2Home.html";},
+                    'navigate to stocks': () => {window.location.href= "assignment2Stocks.html";},
+                    'navigate to dogs': () => {window.location.href= "assignment2Dogs.html";}
+                };
+                
+                // Add our commands to annyang
+                annyang.addCommands(commands);
+                
+                const startBtn = document.getElementById('startVoice');
+                const stopBtn = document.getElementById('stopVoice');
+
+                startBtn.addEventListener('click', function() {
+                    annyang.start();
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                });
+
+                stopBtn.addEventListener('click', function() {
+                    annyang.abort();
+                    stopBtn.disabled = true;
+                    startBtn.disabled = false;
+                });
+
+                }
+            </script>            
+        </div>
+
+    </body>
+
+
+
+
+
+</html>

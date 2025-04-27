@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <Title>INST377 - Ari Freireich - Assignment 2 Home Page</Title>
+        <link rel="stylesheet" href="assignment2css.css">
+        <script src="annyang.min.js"></script>
+        <script src="assignment2.js" defer></script>
+       
+    </head>
+
+    <body>
+
+        <header>
+            <h1>INST377 - Ari Freireich - Assignment 2 Dogs Page</h1>
+        </header>
+
+        <!-- Nav bar -->
+        <nav id="navMain">
+            <ul>
+                <li><a href="assignment2Home.html">Home</a></li>
+                <li><a href="assignment2Stocks.html">Stocks</a></li>
+                <li><a href="assignment2Dogs.html">Dogs</a></li>
+            </ul>
+        </nav>
+        
+       <div class="main-Container">
+            <h1>Here's some Good Boys</h1>
+
+            <!-- SimpleSlider container -->
+            <div id="carousel" class="slider" style="width: 612px; height:612px;" data-simple-slider>
+                <!-- Dog images will be dynamically inserted here inside <div>s -->
+            </div>
+            <script src = "https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js"></script>
+
+            <h2>Dog Breeds</h2>
+            <div id="breedButtons" class="breedButtonsContainer">
+                <!-- Buttons will be dynamically added here -->
+            </div>
+
+            <div id="breedInfo" class="breedContainer" style="display: none;">
+                <h3 id="breedName"></h3>
+                <p id="breedDescription"></p>
+                <p>Min Life Expectancy: <span id="minLife"></span> years</p>
+                <p>Max Life Expectancy:<span id="maxLife"></span> years</p>
+            </div>
+
+
+        </div>
+
+
+        <div class="annyangContainer">
+            <h1>Navigate the webpage using audio!</h1>
+            <p>Please ensure that your mic is enabled.</p>
+
+            <button id="startVoice">Start Voice Control</button>
+            <button id="stopVoice">Stop Voice Control</button>
+
+            <script>
+                let isListening = false;
+
+                if (annyang) {
+                // Let's define a command.
+                const commands = {
+                    'hello': () => { alert('Hello world!'); },
+                    'change background to *color': function(color) {document.body.style.backgroundColor = color;},
+                    'navigate to home': () => {window.location.href= "assignment2Home.html";},
+                    'navigate to stocks': () => {window.location.href= "assignment2Stocks.html";},
+                    'navigate to dogs': () => {window.location.href= "assignment2Dogs.html";}
+                };
+                
+                // Add our commands to annyang
+                annyang.addCommands(commands);
+                
+                const startBtn = document.getElementById('startVoice');
+                const stopBtn = document.getElementById('stopVoice');
+
+                startBtn.addEventListener('click', function() {
+                    annyang.start();
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                });
+
+                stopBtn.addEventListener('click', function() {
+                    annyang.abort();
+                    stopBtn.disabled = true;
+                    startBtn.disabled = false;
+                });
+
+                }
+            </script>            
+        </div>
+
+    </body>
+
+
+
+
+
+</html>
