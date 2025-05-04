@@ -3,14 +3,14 @@
         <Title>INST377 - Ari Freireich - Assignment 2 Home Page</Title>
         <link rel="stylesheet" href="assignment2css.css">
         <script src="annyang.min.js"></script>
-        <script src="assignment2.js" defer></script>
+        <script src="assignment2Home.js" defer></script>
     </head>
 
-    <body>
+    <header>
+        <h1>INST377 - Ari Freireich - Assignment 2 Home Page</h1>
+    </header>
 
-        <header>
-            <h1>INST377 - Ari Freireich - Assignment 2 Home Page</h1>
-        </header>
+    <body>
 
         <!-- Nav bar -->
         <nav id="navMain">
@@ -26,11 +26,11 @@
             <h1>Here are some activities to try!</h1>
 
             <a a href="assignment2Stocks.html">
-                <button class="button-64">Stocks</button>
+                <button class="button-73" role="button">Stocks</button>
             </a>
     
             <a a href="assignment2Dogs.html">
-                <button class="button-64">Dogs</button>
+                <button class="button-73" role="button">Dogs</button>
             </a>
 
             <div class="quoteBox">
@@ -48,6 +48,14 @@
         <div class="annyangContainer">
             <h1>Navigate the webpage using audio!</h1>
             <p>Please ensure that your mic is enabled.</p>
+            <dl>
+                <dt><strong>Hello World</strong></dt>
+                <dd>- Say "Hello"</dd>
+                <dt><strong>Page navigation</strong></dt>
+                <dd>- Say "Navigate to" and the name of the page</dd>
+                <dt><strong>Change background color</strong></dt>
+                <dd>- Say "Change color to" and the color you want to change the color of the page to</dd>
+            </dl>
 
             <button id="startVoice">Start Voice Control</button>
             <button id="stopVoice">Stop Voice Control</button>

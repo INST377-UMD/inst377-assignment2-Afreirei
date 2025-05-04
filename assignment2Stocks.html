@@ -1,10 +1,14 @@
 <html>
     <head>
-        <Title>INST377 - Ari Freireich - Assignment 2 Home Page</Title>
+        <Title>INST377 - Ari Freireich - Assignment 2 Stocks Page</Title>
         <link rel="stylesheet" href="assignment2css.css">
         <script src="annyang.min.js"></script>
-        <script src="assignment2.js" defer></script>
+        <script src="assignment2Stocks.js" defer></script>
     </head>
+
+    <header>
+        <h1>INST377 - Ari Freireich - Assignment 2 Stocks Page</h1>
+    </header>
 
     <body>
 
@@ -16,11 +20,59 @@
                 <li><a href="assignment2Dogs.html">Dogs</a></li>
             </ul>
 
-        </nav>       
+        </nav>
+
+        <div class="mainContainer">
+            <h1>Let's see some Stocks</h1>
+
+
+            <div class="formContainer">
+                <h2>Enter a stock and day range to get a stock chart.</h2>
+                <input type="text" id="stockTicker">
+                <select id="dayRange">
+                  <option value="30">30 Days</option>
+                  <option value="60">60 Days</option>
+                  <option value="90">90 Days</option>
+                </select>
+                <button id="fetchStock">Get Stock Data</button>
+            </div>
+          
+            <div class="chartContainer">
+                <canvas id="stockChart"></canvas>
+            </div>
+            
+            <div class= "redditStockContainer">
+                <h2>Top 5 Stocks on Reddit</h2>
+                <table id="redditStocks">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Comment Count</th>
+                        <th>Sentiment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Top 5 stocks will be injected here -->
+                </tbody>
+                </table>
+            </div>
+    
+
+        </div>
 
         <div class="annyangContainer">
             <h1>Navigate the webpage using audio!</h1>
             <p>Please ensure that your mic is enabled.</p>
+            <dl>
+                <dt><strong>Hello World</strong></dt>
+                <dd>- Say "Hello"</dd>
+                <dt><strong>Page navigation</strong></dt>
+                <dd>- Say "Navigate to" and the name of the page</dd>
+                <dt><strong>Change background color</strong></dt>
+                <dd>- Say "Change color to" and the color you want to change the color of the page to</dd>
+                <dt><strong>Lookup Stock</strong></dt>
+                <dd>- Say "Lookup" and the stock you want to look up for a 30 day chart</dd>
+            </dl>
 
             <button id="startVoice">Start Voice Control</button>
             <button id="stopVoice">Stop Voice Control</button>
@@ -35,7 +87,11 @@
                     'change background to *color': function(color) {document.body.style.backgroundColor = color;},
                     'navigate to home': () => {window.location.href= "assignment2Home.html";},
                     'navigate to stocks': () => {window.location.href= "assignment2Stocks.html";},
-                    'navigate to dogs': () => {window.location.href= "assignment2Dogs.html";}
+                    'navigate to dogs': () => {window.location.href= "assignment2Dogs.html";},
+                    'look up *stock' : function(stockName) {
+                        document.getElementById("stockTicker").value = stockName.toUpperCase();
+                        document.getElementById("fetchStock").click();         
+                    }
                 };
                 
                 // Add our commands to annyang
