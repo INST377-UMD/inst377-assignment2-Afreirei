@@ -3,4 +3,4 @@
 
 # Name (Please Input your name): Ari Freireich
 
-# Comments: 
+# Comments: Will need to unzip package.zip Stock chart won't work without it. Was not able to upload the file without zipping it. 
